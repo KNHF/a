@@ -1,0 +1,48 @@
+
+Why Use Virtualenv? ya venv
+
+Isolate dependencies across projects:
+– Each project can have its virtualenv with its own independent set of packages. 
+No version conflicts across projects.
+
+Replicate production environments locally:
+– Mimic the same Python version and packages in dev/test as you have in production.
+
+Keep your global Python clean:
+– Avoid installing lots of libraries directly into your base Python install.
+As you can see, virtualenv brings some major benefits to Python project management. 
+
+project-root/
+│
+├── microservice.py
+├── config.py
+├── app/
+│   ├── __init__.py
+│   ├── views.py
+│   └── static/
+│       └── css/
+│           └── styles.css
+│   └── templates/
+│       └── index.html
+
+
+
+@app.route("/", methods=['GET'])
+def home():
+    message = {"message": "سلام! به میکروسرویس  خوش آمدید."}
+    return jsonify(message)
+
+#  به آدرس هلو اجرا می‌شود
+
+
+@app.route('/')
+@app.route("/hello", methods=['GET'])
+def hello_microservice():
+    # یک پیام به صورت جیسون برمی‌گرداند
+    message = {"message": "Hello from the microservice! This is GeeksForGeeks"}
+    return jsonify(message)
+
+
+# اگر این فایل به صورت مستقیم اجرا شود، برنامه فلسک در پورت  زیر اجرا خواهد شد
+if __name__ == "__main__":
+    app.run(debug=True, port=8000)
