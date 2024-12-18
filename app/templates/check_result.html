@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="utf-8" />
+    <title>نتیجه بررسی زوج یا فرد بودن</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="message">
+      <h1>نتیجه بررسی</h1>
+      <p>شماره تصادفی: {{ random_number }}</p>
+      <p>نتیجه: {{ result }}</p>
+      <p><a href="/">بازگشت به صفحه اصلی</a></p>
+    </div>
+  </body>
+</html>

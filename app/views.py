@@ -1,25 +1,24 @@
-import os
-from flask import Blueprint, render_template, jsonify
-from flask import Flask
+from flask import Blueprint, render_template, jsonify, request
+from .models import db, ExampleModel
+
 main = Blueprint('main', __name__)
 
-# این تابع یک روت تعریف می‌کند که در زمان درخواست گت به آدرس ریشه اجرا می‌شود
 
-app = Flask(__name__, template_folder='templates')
-
-
-@main.route("/", methods=['GET'])
-def home():
-    print("Current working directory:", os.getcwd())
-    print("Template folder:", app.template_folder)
-    # نمایش یک فایل HTML
+@main.route('/')
+def index():
     return render_template('index.html')
 
-# این تابع یک روت تعریف می‌کند که در زمان درخواست گت به آدرس هلو اجرا می‌شود
+
+@main.route('/generate', methods=['GET'])
+def generate_random_number():
+    import random
+    random_number = random.randint(1, 1000)
+    return jsonify({"random_number": random_number})
 
 
-@main.route("/hello", methods=['GET'])
-def hello_microservice():
-    # یک پیام به صورت جیسون برمی‌گرداند
-    message = {"message": "Hello from the microservice! This is GeeksForGeeks"}
-    return jsonify(message)
+@main.route('/api', methods=['GET'])
+def api_usage():
+    api_key = request.args.get('api_key')
+    if api_key:
+        return jsonify({"api_key": api_key})
+    return jsonify({"error": "API key is missing"}), 400

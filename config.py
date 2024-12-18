@@ -1,25 +1,19 @@
 import os
-from os import environ
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
-class Config(object):
-    DEBUG = False
-    TESTING = False
-
-    basedir = os.path.abspath(os.path.dirname(__file__))
-
-    SECRET_KEY = 'first-coding-job'
-
-    UPLOADS = "C:/Users/USER/Documents/New VS Code/Uni/MicroService - Flask - GFG/app/static/uploads"
-
-    SESSION_COOKIE_SECURE = True
-    DEFAULT_THEME = None
+class Config:
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
+    STATIC_FOLDER = 'app/static'
+    TEMPLATES_FOLDER = 'app/templates'
+    SQLALCHEMY_DATABASE_URI = os.environ.get(
+        'DATABASE_URL') or 'mysql+mysqlconnector://user:password@db/microservices_db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    API_KEY = os.environ.get('API_KEY')
 
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SESSION_COOKIE_SECURE = False
-
-
-class DebugConfig(Config):
-    DEBUG = False
+    STATIC_URL = '/static/'

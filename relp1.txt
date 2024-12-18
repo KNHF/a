@@ -1,0 +1,103 @@
+
+Why Use Virtualenv? ya venv
+
+Isolate dependencies across projects:
+– Each project can have its virtualenv with its own independent set of packages. 
+No version conflicts across projects.
+
+Replicate production environments locally:
+– Mimic the same Python version and packages in dev/test as you have in production.
+
+Keep your global Python clean:
+– Avoid installing lots of libraries directly into your base Python install.
+As you can see, virtualenv brings some major benefits to Python project management. 
+
+project-root/
+│
+├── microservice.py
+├── config.py
+├── app/
+│   ├── __init__.py
+│   ├── views.py
+│   └── static/
+│       └── css/
+│           └── styles.css
+│   └── templates/
+│       └── index.html
+
+cd "C:\Users\USER\Documents\New VS Code\Uni\MicroService - Flask - GFG\a"
+.\venv\Scripts\Activate
+
+@app.route("/", methods=['GET'])
+def home():
+    message = {"message": "سلام! به میکروسرویس  خوش آمدید."}
+    return jsonify(message)
+
+#  به آدرس هلو اجرا می‌شود
+cd "C:\Users\USER\Documents\New VS Code\Uni\MicroService - Flask - GFG\a"
+
+
+@app.route('/')
+@app.route("/hello", methods=['GET'])
+def hello_microservice():
+    # یک پیام به صورت جیسون برمی‌گرداند
+    message = {"message": "Hello from the microservice! This is GeeksForGeeks"}
+    return jsonify(message)
+
+
+# اگر این فایل به صورت مستقیم اجرا شود، برنامه فلسک در پورت  زیر اجرا خواهد شد
+if __name__ == "__main__":
+    app.run(debug=True, port=8000)
+لطفا طبق ساخار بگو. میتونی دوباره لینک گیتهاب را بررسی کنی
+
+delete venv
+rmdir /s /q venv  # Windows
+rm -rf venv       # macOS/Linux
+cd "C:\Users\USER\Documents\New VS Code\Uni\MicroService - Flask - GFG\a"
+Remove-Item -Recurse -Force .\venv
+deactivate 
+in kar kard
+
+verify
+pip list
+
+pip install -r requirements.txt
+python -m venv venv  or python -m venv venv
+.\venv\Scripts\activate
+
+docker-compose build
+docker-compose up
+pip install --upgrade flask werkzeug
+
+Flask-Migrate==3.1.0
+flask db init
+flask db migrate -m "Initial migration."
+flask db upgrade
+
+pip install --upgrade flask
+Werkzeug==2.2.x
+
+python microservice.py
+python random_number.py
+python even_odd.py
+
+C:\Users\USER\Documents\New VS Code\Uni\MicroService - Flask - GFG\a
+├── docker-compose.yml
+├── config.py
+├── api_gateway\
+│   ├── api_gateway.py
+│   ├── Dockerfile
+├── random_number\
+│   ├── random_number.py
+│   ├── Dockerfile
+├── even_odd\
+│   ├── even_odd.py
+│   ├── Dockerfile
+├── app\
+│   ├── __init__.py
+│   ├── static\
+│   │   └── css\
+│   │       └── styles.css
+│   └── templates\
+│       ├── index.html
+│       └── check_result.html

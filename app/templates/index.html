@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="utf-8" />
+    <title>صفحه اصلی</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="message">
+      <h1>به این میکروسرویس خوش آمدید</h1>
+      <p>
+        <a href="http://127.0.0.1:8001/generate"
+          >میکروسرویس تولید شماره تصادفی</a
+        >
+      </p>
+      <p>
+        <a href="http://127.0.0.1:8002/check"
+          >میکروسرویس بررسی زوج یا فرد بودن شماره</a
+        >
+      </p>
+    </div>
+  </body>
+</html>
