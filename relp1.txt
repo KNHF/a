@@ -71,12 +71,16 @@ docker-compose up
 docker-compose down
 docker-compose up --build
 
-pip install --upgrade flask werkzeug
 
-docker run -it a-random_number-1
+dar shell
+docker build -t a-api_gateway-1 -f api_gateway/Dockerfile .
+docker run -it a-api_gateway-1
 
-docker pull -it a-random_number-1
-اسمش جلوش. فیلترشکن باید فعال باشد
+docker build -t a-even_odd-1 -f even_odd/Dockerfile .
+docker run -it a-even_odd-1
+
+docker build -t a-random_number-1 -f random_number/Dockerfile .
+docker run -t a-random_number-1
 
 Flask-Migrate==3.1.0
 flask db init
