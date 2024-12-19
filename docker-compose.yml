@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   db_random_number:
     image: mysql:5.7

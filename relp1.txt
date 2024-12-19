@@ -71,7 +71,13 @@ docker-compose up
 docker-compose down
 docker-compose up --build
 
+baraye hazf
 docker container prune
+
+baraye didan logs
+docker-compose logs random_number
+docker-compose logs even_odd
+docker-compose logs api_gateway
 
 ENV FLASK_APP=api_gateway.api_gateway:create_app
 

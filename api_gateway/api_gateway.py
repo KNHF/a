@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import config
@@ -14,12 +14,21 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
 
-    from app.views import main as main_blueprint
-    app.register_blueprint(main_blueprint)
+    @app.route("/", methods=['GET'])
+    def home():
+        return jsonify({"message": "Welcome to the API Gateway"}), 200
+
+    @app.errorhandler(404)
+    def not_found(error):
+        return jsonify({"error": "Not found"}), 404
+
+    @app.errorhandler(500)
+    def internal_error(error):
+        return jsonify({"error": "Internal server error"}), 500
 
     return app
 
 
 if __name__ == "__main__":
     app = create_app()
-    app.run(port=8000, debug=True)
+    app.run(host='0.0.0.0', port=8000)

@@ -1,8 +1,9 @@
 Flask
-requests==2.26.0
-mysql-connector-python==8.0.26
-python-dotenv==0.19.2
-SQLAlchemy==1.4.27
-Flask-Migrate==3.1.0
+requests
+mysql-connector-python
+python-dotenv
+SQLAlchemy
+Flask-Migrate
 Werkzeug
-Flask-SQLAlchemy==3.0.4  # Ensure this is the latest version
+Flask-SQLAlchemy
+mysqlclient
