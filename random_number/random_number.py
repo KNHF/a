@@ -1,14 +1,14 @@
 from flask import Flask, jsonify, render_template
 from app.models import db, ExampleModel
 from flask_migrate import Migrate
-import random
 import config
+import random
 
 
 def create_app():
     app = Flask(__name__, template_folder='../app/templates',
                 static_folder='../app/static')
-    app.config.from_object(config.DevelopmentConfig)
+    app.config.from_object(config.RandomNumberConfig)
 
     db.init_app(app)
     migrate = Migrate(app, db)

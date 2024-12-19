@@ -71,6 +71,9 @@ docker-compose up
 docker-compose down
 docker-compose up --build
 
+docker container prune
+
+ENV FLASK_APP=api_gateway.api_gateway:create_app
 
 dar shell
 docker build -t a-api_gateway-1 -f api_gateway/Dockerfile .

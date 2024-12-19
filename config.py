@@ -1,19 +1,24 @@
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
-    STATIC_FOLDER = 'app/static'
-    TEMPLATES_FOLDER = 'app/templates'
-    SQLALCHEMY_DATABASE_URI = os.environ.get(
-        'DATABASE_URL') or 'mysql+mysqlconnector://user:password@db/microservices_db'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    API_KEY = os.environ.get('API_KEY')
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'a-very-secret-key'
+    STATIC_URL = '/static/'
 
 
 class DevelopmentConfig(Config):
     DEBUG = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     STATIC_URL = '/static/'
+
+
+class RandomNumberConfig(DevelopmentConfig):
+    SQLALCHEMY_DATABASE_URI = 'mysql://user:password@db_random_number/random_number_db'
+
+
+class EvenOddConfig(DevelopmentConfig):
+    SQLALCHEMY_DATABASE_URI = 'mysql://user:password@db_even_odd/even_odd_db'
+
+
+class ApiGatewayConfig(DevelopmentConfig):
+    SQLALCHEMY_DATABASE_URI = 'mysql://user:password@db_api_gateway/api_gateway_db'

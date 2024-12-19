@@ -9,7 +9,7 @@ migrate = Migrate()
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object(config.DevelopmentConfig)
+    app.config.from_object(config.ApiGatewayConfig)
 
     db.init_app(app)
     migrate.init_app(app, db)
