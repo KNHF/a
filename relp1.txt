@@ -67,7 +67,16 @@ python -m venv venv  or python -m venv venv
 
 docker-compose build
 docker-compose up
+
+docker-compose down
+docker-compose up --build
+
 pip install --upgrade flask werkzeug
+
+docker run -it a-random_number-1
+
+docker pull -it a-random_number-1
+اسمش جلوش. فیلترشکن باید فعال باشد
 
 Flask-Migrate==3.1.0
 flask db init
